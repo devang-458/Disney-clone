@@ -5,8 +5,9 @@ import { HiMiniChevronRight ,HiMiniChevronLeft } from "react-icons/hi2";
 
 export function Slider(){
 
-    const [movieList , setMovieList] = useState([])
-    const elementRef = useRef
+    const [movieList , setMovieList] = useState([]);
+    const elementRef = useRef();
+    const screenWidth = window.innerWidth;
     
     useEffect(()=>{
         getTrendingVideos()
@@ -20,16 +21,24 @@ export function Slider(){
         }))
     }
 
-    const slider
+    const sliderRight = (element)=>{
+        element.scrollLeft += screenWidth - 110
+    }
+    
+    const sliderLeft = (element)=>{
+        element.scrollRight -= screenWidth - 110
+    }
 
     return <div>
         <div >
-        <HiMiniChevronLeft className="hidden md:block text-white text-[40px] absolute mx-8 mt-[155px] cursor-pointer"/>
-        <HiMiniChevronRight className="hidden md:block text-white text-[40px] absolute mx-8 mt-[155px] cursor-pointer right-0" />
+        <HiMiniChevronLeft className="hidden md:block text-white text-[40px] absolute mx-8 mt-[155px] cursor-pointer " onClick={()=>sliderLeft(elementRef.current)}/>
+        <HiMiniChevronRight className="hidden md:block text-white text-[40px] absolute mx-8 mt-[155px] cursor-pointer right-0" onClick={()=>sliderRight(elementRef.current)}/>
         </div>
-        <div className="flex overflow-x-auto w-full px-16 py-4 scrollbar-hide" ref={elementRef}>
+        <div className="flex overflow-x-auto w-full px-16 py-4 scrollbar-hide scroll-smooth" ref={elementRef}>
         {movieList.map((item,index)=>(
-            <img src={IMAGE_BASE_URL+ item.backdrop_path} className="min-w-full object-cover md:h-[310px] object-left-top mr-10 rounded-lg"/>
+            <img src={IMAGE_BASE_URL+ item.backdrop_path} className="min-w-full object-cover md:h-[310px] object-left-top mr-5 rounded-lg hover:border-[4px]
+             border-gray-400 transition-all ease-in-out shadow-slate-900 shadow-2xl duration-200" 
+              style={{ boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.2)' }}/>
         ))}
     </div>
     </div>
