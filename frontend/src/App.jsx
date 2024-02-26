@@ -1,14 +1,15 @@
 import Header from "./componets/Header";
 import { ProductionHouse } from "./componets/Production";
 import { Slider } from "./componets/Slider";
-import "./App.css"
+import GenreMovieList from "./componets/GenreMovieList";
 
 function App(){
   return (
     <>
     <Header />
-    <Slider />\
+    <Slider />
     <ProductionHouse />
+    <GenreMovieList />
     </>
   )
 }

@@ -1,11 +1,18 @@
-import React from "react"
-import axios from "axios"
+import axios from "axios";
 
-const movieBaseurl = "https://api.themoviedb.org/3/trending/movie/day?api_key="
-const api_key = "a7af1114bbebcb36d009343210bd7385"
+const movieBaseUrl="https://api.themoviedb.org/3"
+const api_key='2ec0d66f5bdf1dd12eefa0723f1479cf'
 
-const getTrendingVideos = axios.get(movieBaseurl+api_key)
+const movieByGenreBaseURL='https://api.themoviedb.org/3/discover/movie?api_key=2ec0d66f5bdf1dd12eefa0723f1479cf';
 
-export default {
-    getTrendingVideos
+//https://api.themoviedb.org/3/trending/all/day?api_key=2ec0d66f5bdf1dd12eefa0723f1479cf
+const getTrendingVideos=axios.get(movieBaseUrl+
+    "/trending/all/day?api_key="+api_key);
+
+    const getMovieByGenreId =(id)=> 
+    axios.get(movieByGenreBaseURL+"&with_genres="+id)
+
+export default{
+    getTrendingVideos,
+    getMovieByGenreId
 }

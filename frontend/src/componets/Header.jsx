@@ -36,10 +36,10 @@ export default function Header() {
 
   return (
     <div className="flex gap-8 items-center p-5 justify-between">
-        <div className='flex gap-8 items-center '>
+        <div className='flex  gap-8 items-center '>
         <img src={logo} className='w-[80px] md:w-[115px] object-cover'/>
         
-        <div className='hidden md:flex gap-8'>
+        <div className='hidden md:flex gap-12 pt-4'>
         {menu.map((item)=>(
         <Headeritem  name={item.name} Icon={item.icon}/>))}
         </div>
