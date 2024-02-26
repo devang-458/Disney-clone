@@ -10,3 +10,5 @@ export default function MovieCard({movie}) {
          duration-150 cursor-pointer hover:scale-110'/>
     </div>
 }
+
+
